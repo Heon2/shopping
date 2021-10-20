@@ -34,6 +34,7 @@
  </table>
  <div style="text-align: center">
  <button class="btn btn-default" onclick="location.href='${root}/contents/mainlist/${dto.cateno}'">상품목록</button>
+ <button class="btn btn-default" onclick="location.href='${root}/contents/mainlist/${dto.cateno}'">장바구니에 추가</button>
  </div>
  
  <br>
