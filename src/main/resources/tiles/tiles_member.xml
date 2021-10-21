@@ -55,5 +55,10 @@
     <put-attribute name="body"
       value="/WEB-INF/views/member/mypage.jsp" />
   </definition>
+  <definition name="/myerror" extends="main">
+    <put-attribute name="title" value="에러페이지"></put-attribute>
+    <put-attribute name="body"
+      value="/WEB-INF/views/error.jsp" />
+  </definition>
  
 </tiles-definitions>

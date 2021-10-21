@@ -7,6 +7,16 @@
 <head>
 <title>장바구니 목록</title>
 <meta charset="UTF-8">
+<script>
+function dCheck(cartno){
+	if(confirm("해당 품목을 삭제하시겠습니까?")){
+		//alert(cartno);
+		location.href="./delete/"+cartno;
+	}else{
+		
+	}
+}
+</script>
 </head>
 <body>
  
@@ -20,6 +30,7 @@
     <th>상품명</th>
     <th>가격</th>
     <th>수량</th>
+    <th>삭제</th>
     </tr>
    </thead>
    <tbody>
@@ -30,11 +41,11 @@
    </div>
 </c:when>
 <c:otherwise>
-  
+   <% int i = 1; %>
    <c:forEach var="dto" items="${list}"> 
    
    <tr>
-    <td>${dto.cartno}</td>
+    <td><%=i++ %></td>
     <td>
     <a href="/contents/detail/${dto.contentsno }">
     <img src="/pstorage/${dto.filename}"  class="img-rounded" width="100px" height="100px">
@@ -45,13 +56,23 @@
     </td>
     <td>${dto.price}</td>
     <td>${dto.quantity}</td>
+    <td>
+    <a onclick="dCheck(${dto.cartno});">
+          <span class="glyphicon glyphicon-trash"></span>
+    </a>
+    </td>
    </tr>
-   </c:forEach>
-   </c:otherwise>
+   </c:forEach>   
+   </c:otherwise> 
 </c:choose>
 </tbody>
   
-  </table>
+ </table>
+ <br><br>
+ <div >
+ <h2 align="right"><strong>총 가격 : </strong>${dto.sum }원 <button>구매하기</button></h2>
+
+ </div>
 </div>
 </body>
 </html>

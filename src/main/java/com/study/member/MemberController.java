@@ -39,6 +39,12 @@ public class MemberController {
 
 		return "/home";
 	}
+	
+	@GetMapping("/myerror")
+	public String error() {
+		
+		return "/myerror";
+	}
 
 	@GetMapping("/member/agree")
 	public String agree() {
@@ -64,7 +70,7 @@ public class MemberController {
 		if (service.create(dto) > 0) {
 			return "redirect:/";
 		} else {
-			return "error";
+			return "/myerror";
 		}
 
 	}
@@ -205,7 +211,7 @@ public class MemberController {
 			model.addAttribute("id", dto.getId());
 			return "redirect:./read";
 		} else {
-			return "error";
+			return "/myerror";
 		}
 	}
 
@@ -251,7 +257,7 @@ public class MemberController {
 		if (cnt == 1) {
 			return "redirect:./read";
 		} else {
-			return "./error";
+			return "/myerror";
 		}
 	}
 	

@@ -36,7 +36,7 @@ public class NoticeController {
 		if (service.create(dto) > 0) {
 			return "redirect:list";
 		} else {
-			return "/error";
+			return "/myerror";
 		}
 
 	}
@@ -128,7 +128,7 @@ public class NoticeController {
 	    } else if (cnt==1) {
 	      return "redirect:./list";
 	    } else {
-	      return "./error";
+	      return "/myerror";
 	    }
 	 
 	  }
@@ -159,7 +159,7 @@ public class NoticeController {
 	    } else if (cnt==1) {
 	      return "redirect:/notice/list";
 	    } else {
-	      return "./error";
+	      return "/myerror";
 	    }
 	 
 	  }

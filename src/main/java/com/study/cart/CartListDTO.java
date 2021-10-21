@@ -13,4 +13,5 @@ public class CartListDTO {  //cart, contents 조인하기위한 DTO
 	private int quantity;
 	private String filename;
 	private int contentsno;
+	private int sum;
 }

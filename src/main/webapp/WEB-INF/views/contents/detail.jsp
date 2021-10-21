@@ -6,10 +6,26 @@
 <head>
   <title>상품 정보</title>
   <meta charset="utf-8">
+  <script>
+  function qCheck(f){
+	  if(f.quantity.value.length==0){
+			alert("수량을 입력하세요");
+			f.quantity.focus();
+			return false;
+		}
+  }
+  </script>
 </head>
 <body>
-<div class="container">
 
+<div class="container">
+<form class="form-horizontal" 
+        action="/cart/create"
+        method="post"
+        onsubmit="return qCheck(this)"
+        >
+<input type="hidden" name="pname" value="${dto.pname}">
+<input type="hidden" name=id value="${id}">
 <h2 class="col-sm-offset-2 col-sm-10">${dto.pname}의 상품정보</h2>
  <table class="table table-bordered">
  <tr>
@@ -30,15 +46,38 @@
  	<th>상세정보</th>
  	<td>${dto.detail}</td>
  </tr>
+ <c:choose>
+ 	<c:when test="${empty sessionScope.id || sessionScope.grade != 'A'}">
+ <tr>
+ 	<th>수량</th>
+ 	<td>
+ 	<div class="col-sm-3">
+ 	<input type="text" class="form-control" id="quantity" placeholder="수량을 입력하세요" name="quantity" ></td>
+ 	</div>
+ </tr>
+ </c:when>
+ </c:choose>
+ 	
+ </tr>
  
  </table>
  <div style="text-align: center">
- <button class="btn btn-default" onclick="location.href='${root}/contents/mainlist/${dto.cateno}'">상품목록</button>
- <button class="btn btn-default" onclick="location.href='${root}/contents/mainlist/${dto.cateno}'">장바구니에 추가</button>
+ <button type="button" class="btn btn-default" onclick="location.href='${root}/contents/mainlist/${dto.cateno}'">상품목록</button>
+ <c:choose>
+ 	<c:when test="${empty sessionScope.id }">
+		<button type="button" class="btn btn-default" onclick="location.href='/member/login'">장바구니에 추가</button>
+		<button type="reset" class="btn btn-default">취소</button>
+	</c:when>
+ 	<c:when test="${not empty sessionScope.id && sessionScope.grade != 'A'}">
+	 	<button type="submit" class="btn btn-default">장바구니에 추가</button>
+	 	<button type="reset" class="btn btn-default">취소</button>
+ 	</c:when>
+</c:choose>
  </div>
  
  <br>
- 
+</form>
 </div>
+
 </body>
 </html>

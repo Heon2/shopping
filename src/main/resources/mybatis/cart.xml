@@ -5,10 +5,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.study.cart.CartMapper">
-	<select id="list" parameterType="String" resultType="com.study.cart.CartListDTO">
-		select a.cartno, a.pname, a.quantity, b.price, b.filename, b.contentsno
+
+	<insert id="create" parameterType="com.study.cart.CartDTO">
+		insert into cart(cartno,id,pname,quantity)
+		values((select nvl(max(cartno),0) + 1 from cart),#{id},#{pname},#{quantity})
+	</insert>
+	<select id="list" parameterType="String"
+		resultType="com.study.cart.CartListDTO">
+		select a.cartno, a.pname, a.quantity, b.price, b.filename,
+		b.contentsno
 		from cart a inner join contents b
 		on a.pname = b.pname
 		where a.id = #{id}
+		order by cartno DESC
 	</select>
+
+	<select id="sum" parameterType="String"
+		resultType="com.study.cart.CartListDTO">
+		select sum(b.price*a.quantity) as sum
+		from cart a inner join
+		contents b
+		on a.pname = b.pname
+		where id = #{id}
+		group by id
+	</select>
+
+	<delete id="delete" parameterType="int">
+		delete from cart
+		where cartno =
+		#{cartno}
+	</delete>
 </mapper>
