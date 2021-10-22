@@ -70,7 +70,7 @@ function dCheck(cartno){
  </table>
  <br><br>
  <div >
- <h2 align="right"><strong>총 가격 : </strong>${dto.sum }원 <button>구매하기</button></h2>
+ <h2 align="right"><strong>총 가격 : </strong>${dto.sum }원 <button class="btn btn-default">구매하기</button></h2>
 
  </div>
 </div>

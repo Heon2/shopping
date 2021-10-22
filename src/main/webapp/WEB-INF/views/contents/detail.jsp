@@ -6,15 +6,6 @@
 <head>
   <title>상품 정보</title>
   <meta charset="utf-8">
-  <script>
-  function qCheck(f){
-	  if(f.quantity.value.length==0){
-			alert("수량을 입력하세요");
-			f.quantity.focus();
-			return false;
-		}
-  }
-  </script>
 </head>
 <body>
 
@@ -22,7 +13,6 @@
 <form class="form-horizontal" 
         action="/cart/create"
         method="post"
-        onsubmit="return qCheck(this)"
         >
 <input type="hidden" name="pname" value="${dto.pname}">
 <input type="hidden" name=id value="${id}">
@@ -51,9 +41,16 @@
  <tr>
  	<th>수량</th>
  	<td>
- 	<div class="col-sm-3">
- 	<input type="text" class="form-control" id="quantity" placeholder="수량을 입력하세요" name="quantity" ></td>
- 	</div>
+ 	<div class="col-sm-2" >
+    	<select id="quantity" name="quantity" class="form-control">
+    		<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>   	
+    	</select>
+    
+    </div>
  </tr>
  </c:when>
  </c:choose>
