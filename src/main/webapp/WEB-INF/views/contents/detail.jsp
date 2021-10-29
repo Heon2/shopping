@@ -7,7 +7,7 @@
   <title>상품 정보</title>
   <meta charset="utf-8">
 </head>
-<body>
+<body> 
 
 <div class="container">
 <form class="form-horizontal" 

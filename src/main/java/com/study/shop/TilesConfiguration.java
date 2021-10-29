@@ -11,11 +11,12 @@ public class TilesConfiguration {
   @Bean
   public TilesConfigurer tilesConfigurer() {
       final TilesConfigurer configurer = new TilesConfigurer();
-      //해당 경로에 tiles.xml 파일을 넣음
+      //�빐�떦 寃쎈줈�뿉 tiles.xml �뙆�씪�쓣 �꽔�쓬
       configurer.setDefinitions(new String[]{"classpath:/tiles/tiles_member.xml",
     		  								 "classpath:/tiles/tiles_contents.xml",
     		  								 "classpath:/tiles/tiles_notice.xml",
-    		  								 "classpath:/tiles/tiles_cart.xml"});
+    		  								 "classpath:/tiles/tiles_cart.xml",
+    		  								"classpath:/tiles/tiles_naver_chatting.xml"});
       configurer.setCheckRefresh(true);
       return configurer;
   }
